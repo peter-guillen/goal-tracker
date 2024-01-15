@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const GoalCreate = ({ onCreate }) => {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
+
+  const navigate = useNavigate();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -13,11 +16,12 @@ const GoalCreate = ({ onCreate }) => {
     setPriority(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    onCreate(title, priority);
+    await onCreate(title, priority);
     setTitle("");
     setPriority("");
+    navigate("/");
   };
 
   return (

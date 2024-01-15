@@ -2,18 +2,12 @@ import GoalShow from "./GoalShow";
 import PropTypes from "prop-types";
 
 const GoalList = ({ goals, onDelete, onEdit }) => {
-  return (
-    <>
-      {goals.map((goal) => (
-        <GoalShow
-          goal={goal}
-          key={goal.id}
-          onDelete={onDelete}
-          onEdit={onEdit}
-        />
-      ))}
-    </>
-  );
+  const goalId = goals.map((goal) => goal._id);
+  const renderedGoals = goals.map((goal) => (
+    <GoalShow goal={goal} key={goal._id} onDelete={onDelete} onEdit={onEdit} />
+  ));
+
+  return <div key={goalId}>{renderedGoals}</div>;
 };
 
 GoalList.propTypes = {
