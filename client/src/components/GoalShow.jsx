@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import GoalEdit from "./GoalEdit";
 import GoalDetails from "./GoalDetails";
+import GoalEdit from "./GoalEdit";
 
 import { FaPencil, FaCircleXmark, FaBell } from "react-icons/fa6";
 
@@ -67,12 +67,10 @@ const GoalShow = ({ goal, onDelete, onEdit }) => {
   const getGoalPoints = goal.priority * 5;
   goal.points = getGoalPoints;
 
-  <Routes>
-    <Route path={"/:id"} element={<GoalDetails goal={goal} />} />
-  </Routes>;
-
   return (
-    <div className="bg-gray-600 flex px-3 px1.5 border">{displayContent}</div>
+    <>
+      <div className="bg-gray-600 flex px-3 px1.5 border">{displayContent}</div>
+    </>
   );
 };
 

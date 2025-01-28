@@ -10,13 +10,11 @@ import NotFound from "./components/NotFound";
 import GoalDetails from "./components/GoalDetails";
 import { ThemeContext } from "./contexts/ThemeContext";
 
-const numOfDays = 30;
-
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route path="/">
       <Route index element={<Home />} />
-      <Route path="/calendar/:id" element={<GoalDetails value={numOfDays} />} />
+      <Route path="/calendar/:id" element={<GoalDetails />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

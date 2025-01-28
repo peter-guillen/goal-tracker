@@ -1,12 +1,11 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
 import { twMerge } from "tailwind-merge";
 import classNames from "classnames";
-import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 
 const HabitCalendar = ({ value }) => {
   const [toggle, setToggle] = useState([]);
-  const { id } = useParams();
 
   const numOfButtons = Array.from({ length: value }, (_, index) => {
     return index + 1;
@@ -39,7 +38,6 @@ const HabitCalendar = ({ value }) => {
           );
         })}
       </div>
-      <div>{id}</div>
     </>
   );
 };

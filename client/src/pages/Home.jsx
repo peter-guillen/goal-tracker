@@ -11,11 +11,11 @@ import { twMerge } from "tailwind-merge";
 import classNames from "classnames";
 import { FaCircleChevronDown, FaCircleChevronUp } from "react-icons/fa6";
 
-const titleStyles = twMerge(classNames("bg-blue-900 text-white text-4xl"));
+const titleStyles = twMerge(classNames("bg-gray-800 text-white flex p-4"));
 
 const Home = () => {
   const [goals, setGoals] = useState([]);
-  const [displayPriorityContent, setDisplayPriorityContent] = useState(false);
+  const [displayGoalPriority, setDisplayGoalPriority] = useState(false);
   const [displayPointTracker, setDisplayPointTracker] = useState(false);
 
   useEffect(() => {
@@ -50,8 +50,8 @@ const Home = () => {
     }
   };
 
-  const handleDisplayPriorityContent = () => {
-    setDisplayPriorityContent(!displayPriorityContent);
+  const handledisplayGoalPriority = () => {
+    setDisplayGoalPriority(!displayGoalPriority);
   };
 
   let priorityContent = (
@@ -61,7 +61,7 @@ const Home = () => {
     </div>
   );
 
-  let renderedPriorityContent = displayPriorityContent ? (
+  let renderedPriorityContent = displayGoalPriority ? (
     priorityContent
   ) : (
     <FaCircleChevronDown />
@@ -84,8 +84,12 @@ const Home = () => {
 
   return (
     <>
-      <h1 className={titleStyles}>Todo Tracker</h1>
-      <div>{message}</div>
+      <header className={titleStyles}>
+        <h1 className="text-4xl">Toduty</h1>
+        <p>{message}</p>
+        <p>Login</p>
+        <p>Logout</p>
+      </header>
 
       <div className="grid grid-cols-2">
         <div>
@@ -93,18 +97,20 @@ const Home = () => {
           <GoalCreate onCreate={handleCreate} />
         </div>
         <div>
-          <h2>Goal Priority</h2>
-          <button onClick={handleDisplayPriorityContent}>
-            {renderedPriorityContent}
-          </button>
-          <h2>Point Tracker</h2>
-          <button onClick={handleDisplayPointTracker}>
-            {renderedPointTracker}
-          </button>
+          <div className="flex">
+            <h2>Goal Priority</h2>
+            <button onClick={handledisplayGoalPriority}>
+              {renderedPriorityContent}
+            </button>
+          </div>
+          <div className="flex">
+            <h2>Point Tracker</h2>
+            <button onClick={handleDisplayPointTracker}>
+              {renderedPointTracker}
+            </button>
+          </div>
         </div>
       </div>
-
-      {JSON.stringify(goals)}
     </>
   );
 };

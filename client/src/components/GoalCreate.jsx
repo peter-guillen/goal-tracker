@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const GoalCreate = ({ onCreate }) => {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
-
-  const navigate = useNavigate();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -21,7 +18,6 @@ const GoalCreate = ({ onCreate }) => {
     await onCreate(title, priority);
     setTitle("");
     setPriority("");
-    navigate("/");
   };
 
   return (

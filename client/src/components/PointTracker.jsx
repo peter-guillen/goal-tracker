@@ -1,9 +1,6 @@
-// import { useState } from "react";
 import PropTypes from "prop-types";
 
 const PointTracker = ({ goals }) => {
-  // const [pointsTotal, setPointsTotal] = useState([]);
-
   const total = goals.reduce((acc, goal) => {
     return acc + goal.points;
   }, 0);
